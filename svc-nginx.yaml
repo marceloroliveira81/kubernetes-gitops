@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
     - name: nginx-svc-port
-      nodePort: 30011
+      nodePort: 30100
       port: 8080
       targetPort: 80
   selector:
