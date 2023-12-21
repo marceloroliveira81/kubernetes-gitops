@@ -9,7 +9,7 @@ spec:
   ports:
     - name: nginx-svc-port
       nodePort: 30100
-      port: 8080
+      port: 8083
       targetPort: 80
   selector:
     pod: nginx-pod
