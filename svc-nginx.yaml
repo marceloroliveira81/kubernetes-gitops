@@ -6,6 +6,7 @@ metadata:
   name: nginx-svc
   namespace: olv
 spec:
+  type: NodePort
   ports:
     - name: nginx-svc-port
       nodePort: 30100
