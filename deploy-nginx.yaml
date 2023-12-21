@@ -4,7 +4,7 @@ metadata:
   labels:
     deploy: nginx-deploy
   name: nginx-deploy
-  #namespace: olv
+  namespace: olv
 spec:
   replicas: 2
   selector:
