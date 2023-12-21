@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: nginx-svc
+  name: nginx-svc
+  namespace: olv
+spec:
+  ports:
+    - name: nginx-svc-port
+      nodePort: 30011
+      port: 8080
+      targetPort: 80
+  selector:
+    pod: nginx-pod

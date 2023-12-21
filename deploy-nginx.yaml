@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    deploy: nginx-deploy
+  name: nginx-deploy
+  namespace: olv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: nginx-pod
+  template:
+    metadata:
+      labels:
+        pod: nginx-pod
+      namespace: olv
+    spec:
+      containers:
+        - image: nginx
+          name: nginx-container
+          resources:
+            limits:
+              cpu: 1m
+              memory: 512Mi
+            requests:
+              cpu: 1m
+              memory: 256Mi
