@@ -4,7 +4,7 @@ metadata:
   labels:
     svc: nginx-svc
   name: nginx-svc
-  namespace: olv
+  #namespace: olv
 spec:
   type: NodePort
   ports:
