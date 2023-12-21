@@ -6,7 +6,7 @@ metadata:
   name: nginx-deploy
   #namespace: olv
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       pod: nginx-pod
@@ -21,8 +21,8 @@ spec:
           name: nginx-container
           resources:
             limits:
-              cpu: 1m
+              cpu: 100m
               memory: 512Mi
             requests:
-              cpu: 1m
+              cpu: 50m
               memory: 256Mi
