@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: uptime-kuma-svc
+  name: uptime-kuma-svc
+  namespace: olv
+spec:
+  ports:
+    - name: uptime-kuma-port-svc
+      nodePort: 30089
+      port: 3001
+      protocol: TCP
+      targetPort: 3001
+  selector:
+    pod: uptime-kuma-pod
+  type: NodePort

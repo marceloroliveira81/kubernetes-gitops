@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    deploy: uptime-kuma-deploy
+  name: uptime-kuma-deploy
+  namespace: olv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: uptime-kuma-pod
+  template:
+    metadata:
+      labels:
+        pod: uptime-kuma-pod
+      namespace: olv
+    spec:
+      containers:
+        - image: louislam/uptime-kuma:1
+          imagePullPolicy: Always
+          name: uptime-kuma-container
+          resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+          volumeMounts:
+            - mountPath: /app/data
+              name: uptime-kuma-vol-node
+      nodeSelector:
+        kubernetes.io/hostname: olv03
+      volumes:
+        - hostPath:
+            path: /mnt/uptime-kuma
+            type: DirectoryOrCreate
+          name: uptime-kuma-vol-node
