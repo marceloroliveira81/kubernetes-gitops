@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    deploy: wordpress-deploy
+  name: wordpress-deploy
+  namespace: olv
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      pod: wordpress-pod
+  template:
+    metadata:
+      labels:
+        pod: wordpress-pod
+      namespace: olv
+    spec:
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: wordpress-configmap
+            - prefix: WORDPRESS_DB_PASSWORD
+              secretRef:
+                name: wordpress-secret
+          image: olv04:5000/wordpressphpmyadmin:php8.2-apache
+          imagePullPolicy: Always
+          name: wordpress-container
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: wordpress-vol-node
+      volumes:
+        - hostPath:
+            path: /mnt/wordpress
+            type: DirectoryOrCreate
+          name: wordpress-vol-node

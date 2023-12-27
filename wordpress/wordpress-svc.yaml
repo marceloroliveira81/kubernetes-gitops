@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: wordpres-svc
+  name: wordpress-svc
+  namespace: olv
+spec:
+  ports:
+    - name: wordpress-port-svc
+      nodePort: 30082
+      port: 8081
+      protocol: TCP
+      targetPort: 80
+  selector:
+    pod: wordpress-pod
+  type: NodePort
