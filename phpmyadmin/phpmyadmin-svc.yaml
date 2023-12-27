@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: phpmyadmin-svc
+  name: phpmyadmin-svc
+  namespace: olv
+spec:
+  ports:
+    - name: phpmyadmin-port-svc
+      nodePort: 30081
+      port: 3001
+      protocol: TCP
+      targetPort: 3001
+  selector:
+    pod: phpmyadmin-pod
+  type: NodePort

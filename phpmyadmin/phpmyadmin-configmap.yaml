@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  PMA_HOST: mysql-svc
+kind: ConfigMap
+metadata:
+  labels:
+    configmap: phpmyadmin-configmap
+  name: phpmyadmin-configmap
+  namespace: olv

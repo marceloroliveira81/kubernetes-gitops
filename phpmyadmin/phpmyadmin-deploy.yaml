@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    deploy: phpmyadmin-deploy
+  name: phpmyadmin-deploy
+  namespace: olv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: phpmyadmin-pod
+  template:
+    metadata:
+      labels:
+        pod: phpmyadmin-pod
+      namespace: olv
+    spec:
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: phpmyadmin-configmap
+          image: olv04:5000/phpmyadmin:5.2.1-apache
+          imagePullPolicy: Always
+          name: phpmyadmin-container
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 256Mi
