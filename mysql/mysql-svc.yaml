@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: mysql-svc
+  name: mysql-svc
+  namespace: olv
+spec:
+  ports:
+    - name: mysql-port-svc
+      port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    pod: mysql-pod
+  type: ClusterIP

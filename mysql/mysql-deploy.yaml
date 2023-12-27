@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    deploy: mysql-deploy
+  name: mysql-deploy
+  namespace: olv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: mysql-pod
+  template:
+    metadata:
+      labels:
+        pod: mysql-pod
+      namespace: olv
+    spec:
+      containers:
+        - envFrom:
+            - prefix: MYSQL_ROOT_PASSWD
+              secretRef:
+                name: mysql-secret
+                optional: false
+          image: olv04:5000/mysql:8.0.33
+          imagePullPolicy: Always
+          name: mysql-container
+          resources:
+            limits:
+              cpu: 50m
+              memory: 256Mi
+            requests:
+              cpu: 25m
+              memory: 128Mi
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-vol-node
+      volumes:
+        - hostPath:
+            path: /mnt/mysql-server
+            type: DirectoryOrCreate
+          name: mysql-vol-node
