@@ -23,7 +23,7 @@ spec:
             - prefix: WORDPRESS_DB_PASSWORD
               secretRef:
                 name: wordpress-secret
-          image: olv04:5000/wordpressphpmyadmin:php8.2-apache
+          image: olv04:5000/wordpress:php8.2-apache
           imagePullPolicy: Always
           name: wordpress-container
           resources:
