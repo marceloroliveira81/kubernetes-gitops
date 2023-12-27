@@ -9,9 +9,9 @@ spec:
   ports:
     - name: phpmyadmin-port-svc
       nodePort: 30081
-      port: 3001
+      port: 8081
       protocol: TCP
-      targetPort: 3001
+      targetPort: 80
   selector:
     pod: phpmyadmin-pod
   type: NodePort
