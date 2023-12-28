@@ -8,8 +8,8 @@ metadata:
 spec:
   ports:
     - name: wordpress-port-svc
-      nodePort: 30082
-      port: 8081
+      nodePort: 30084
+      port: 8084
       protocol: TCP
       targetPort: 80
   selector:
