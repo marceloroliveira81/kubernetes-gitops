@@ -18,10 +18,8 @@ spec:
     spec:
       containers:
         - envFrom:
-            - prefix: MYSQL_ROOT_PASSWD
-              secretRef:
+            - secretRef:
                 name: mysql-secret
-                optional: false
           image: olv04:5000/mysql:8.0.33
           imagePullPolicy: Always
           name: mysql-container
