@@ -6,7 +6,7 @@ metadata:
   name: wordpress-deploy
   namespace: olv
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       pod: wordpress-pod
