@@ -38,6 +38,6 @@ spec:
               name: wordpress-vol-node
       volumes:
         - hostPath:
-            path: /mnt/wordpress
+            path: /mnt/wordpress2
             type: DirectoryOrCreate
           name: wordpress-vol-node
