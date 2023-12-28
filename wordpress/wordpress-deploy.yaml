@@ -20,10 +20,10 @@ spec:
         - envFrom:
             - configMapRef:
                 name: wordpress-configmap
-            - prefix: WORDPRESS_DB_PASSWORD
-              secretRef:
-                name: wordpress-secret
-                optional: false
+            # - prefix: WORDPRESS_DB_PASSWORD
+            #   secretRef:
+            #     name: wordpress-secret
+            #     optional: false
           image: olv04:5000/wordpress:php8.2-apache
           imagePullPolicy: Always
           name: wordpress-container
