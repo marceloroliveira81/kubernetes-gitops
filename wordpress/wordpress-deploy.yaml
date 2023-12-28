@@ -23,6 +23,7 @@ spec:
             - prefix: WORDPRESS_DB_PASSWORD
               secretRef:
                 name: wordpress-secret
+                optional: false
           image: olv04:5000/wordpress:php8.2-apache
           imagePullPolicy: Always
           name: wordpress-container
@@ -38,6 +39,6 @@ spec:
               name: wordpress-vol-node
       volumes:
         - hostPath:
-            path: /mnt/wordpress2
+            path: /mnt/wordpress
             type: DirectoryOrCreate
           name: wordpress-vol-node
