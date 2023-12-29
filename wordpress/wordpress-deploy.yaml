@@ -37,7 +37,10 @@ spec:
             - mountPath: /var/www/html
               name: wordpress-vol-node
       volumes:
-        - hostPath:
-            path: /mnt/wordpress
-            type: DirectoryOrCreate
-          name: wordpress-vol-node
+        - name: wordpress-vol-node
+          persistentVolumeClaim:
+            claimName: wordpress-pvc
+        # - hostPath:
+        #     path: /mnt/wordpress
+        #     type: DirectoryOrCreate
+        #   name: wordpress-vol-node
