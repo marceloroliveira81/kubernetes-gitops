@@ -6,7 +6,7 @@ metadata:
   name: uptime-kuma-deploy
   namespace: olv
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       pod: uptime-kuma-pod
@@ -30,8 +30,8 @@ spec:
           volumeMounts:
             - mountPath: /app/data
               name: uptime-kuma-vol-node
-      nodeSelector:
-        kubernetes.io/hostname: olv03
+      #nodeSelector:
+      #  kubernetes.io/hostname: olv03
       volumes:
         - hostPath:
             path: /mnt/uptime-kuma
